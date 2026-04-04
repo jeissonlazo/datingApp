@@ -456,6 +456,7 @@ Temporary Items
 # content below from: https://github.com/github/gitignore/blob/main/Global/Windows.gitignore
 # Windows thumbnail cache files
 Thumbs.db
+datingapp.db
 ehthumbs.db
 ehthumbs_vista.db
 
@@ -488,4 +489,4 @@ API/datingapp.db
 # Visual Studio Code settings
 .vscode/
 # Database files
-*.db
+*.db 
