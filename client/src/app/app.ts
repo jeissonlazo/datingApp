@@ -5,15 +5,18 @@ import { Nav } from "../layout/nav/nav";
 import { AccountServices } from '../core/services/account-services';
 import { Home } from "../features/home/home";
 import { User } from '../types/user';
+import { Router, RouterOutlet } from "@angular/router";
+import { NgClass } from "../../node_modules/@angular/common/types/_common_module-chunk";
 
 @Component({
   selector: 'app-root',
-  imports: [Nav, Home],
+  imports: [Nav, Home, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
   protected readonly title = signal('client');
+  protected router = inject(Router);
   private accountService = inject(AccountServices);
   private http = inject(HttpClient);
   protected members = signal<User[]>([]);
