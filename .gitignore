@@ -490,3 +490,8 @@ API/datingapp.db
 .vscode/
 # Database files
 *.db 
+API/datingapp.db
+API/datingapp.db-shm
+.gitignore
+API/datingapp.db-wal
+API/datingapp.db

@@ -5,3 +5,14 @@
     <button class="btn btn-success" (click)="get401Error()">Get 401 Error</button>
     <button class="btn btn-neutral" (click)="get400ValidationError()">Get 400 Validation Error</button>
 </div>
+
+@if(validationErrors().length > 0){
+  <div class="flex flex-col justify-center items-center gap-3 mt-5">
+    <h3 class="text-xl font-semibold">Validation Errors</h3>
+    @for (item of validationErrors(); track $index) {
+        <div class="alert alert-error w-full max-w-xs">
+        {{ item }}
+        </div>
+    }
+  </div>
+}
