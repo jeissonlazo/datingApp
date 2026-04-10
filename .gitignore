@@ -495,3 +495,4 @@ API/datingapp.db-shm
 .gitignore
 API/datingapp.db-wal
 API/datingapp.db
+API/datingapp.db
