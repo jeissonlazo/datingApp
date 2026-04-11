@@ -23,17 +23,17 @@
     </a>
     <nav class="flex gap-3 my-2 uppercase text-lg text-white">
       @if(accountService.currentUser()){
-        <a routerLink="/members" routerLinkActive="text-accent" >matches</a>
-        <a routerLink="/lists" routerLinkActive="text-accent" >List</a>
-        <a routerLink="/messages" routerLinkActive="text-accent" >Messages</a>
-        <a routerLink="/errors" routerLinkActive="text-accent" >Errors</a>
+        <a routerLink="/members" routerLinkActive="text-accent"  [routerLinkActiveOptions]="{exact: true}">matches</a>
+        <a routerLink="/lists" routerLinkActive="text-accent"  [routerLinkActiveOptions]="{exact: true}">List</a>
+        <a routerLink="/messages" routerLinkActive="text-accent"  [routerLinkActiveOptions]="{exact: true}">Messages</a>
+        <a routerLink="/errors" routerLinkActive="text-accent"  [routerLinkActiveOptions]="{exact: true}">Errors</a>
       }
     </nav>
     <div class="flex align-middle ml-auto gap-3">
       @if (accountService.currentUser(); as user) {
         <div class="dropdown dropdown-end">
           <div tabindex="0" role="button" class=" m-1 flex items-center text-white gap-3 cursor-pointer">
-            <img [src]="user.imageUrl" alt="" class="w-8 h-8 rounded-full">
+            <img [src]="user?.imageUrl || '/user.png'" alt="" class="w-10 h-10 rounded-full">
             <span>{{ user.displayName }}</span>
           </div>
           <ul
