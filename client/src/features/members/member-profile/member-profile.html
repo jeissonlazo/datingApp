@@ -1,17 +1,71 @@
-@if(member(); as member){
-    <div class="flex flex-col gap-3">
-        <div class="flex gap-2">
-            <span class="font-semibold">Member since:</span>
-            <span>{{member.created | date: 'longDate'}}</span>
-        </div>
-        <div class="flex gap-2">
-            <span class="font-semibold">Last active:</span>
-            <span> {{member.lastActive | date: 'dd MM yyyy h:mm a'}}</span>
-        </div>
-        <h3 class="text-lg font-semibold text-primary">About {{member.displayName}}</h3>
-        <div>
-            <p>{{member.description}}</p>
-        </div>
+@if (memberServices.member(); as member) {
+  <div class="flex flex-col gap-3">
+    <div class="flex gap-2">
+      <span class="font-semibold">Member since:</span>
+      <span>{{ member.created | date: 'longDate' }}</span>
     </div>
+    <div class="flex gap-2">
+      <span class="font-semibold">Last active:</span>
+      <span> {{ member.lastActive | date: 'dd MM yyyy h:mm a' }}</span>
+    </div>
+    <h3 class="text-lg font-semibold text-primary">About {{ member.displayName }}</h3>
+    @if (memberServices.editMode()) {
+      <form #editForm="ngForm" (ngSubmit)="updateProfile()" class="flex flex-col w-full gap-4">
+        <label for="" class="floating-label">
+          <span>Display Name</span>
+          <input
+            type="text"
+            name="displayName"
+            id=""
+            [(ngModel)]="editableMember.displayName"
+            class="input w-full"
+            placeholder="display name"
+          />
+        </label>
 
+        <label for="" class="floating-label">
+          <span>Description</span>
+          <textarea
+            name="description"
+            id=""
+            [(ngModel)]="editableMember.description"
+            class="textarea w-full"
+            placeholder="description"
+          >
+          </textarea>
+        </label>
+        <label for="" class="floating-label">
+          <span>City</span>
+          <input
+            type="text"
+            name="city"
+            id=""
+            [(ngModel)]="editableMember.city"
+            class="input w-full"
+            placeholder="city"
+          />
+        </label>
+
+        <label for="" class="floating-label">
+          <span>Country</span>
+          <input
+            type="text"
+            name="country"
+            id=""
+            [(ngModel)]="editableMember.country"
+            class="input w-full"
+            placeholder="country"
+          />
+        </label>
+
+        <div class="flex self-end">
+          <button [disabled]="!editForm?.dirty" type="submit" class="btn btn-primary">Update Profile</button>
+        </div>
+      </form>
+    } @else {
+      <div>
+        <p>{{ member.description }}</p>
+      </div>
+    }
+  </div>
 }
