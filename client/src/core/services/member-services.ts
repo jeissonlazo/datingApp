@@ -29,4 +29,15 @@ export class MemberServices {
   updateMember(member: MemberUpdate) {
     return this.http.put(this.baseUrl + `members`, member);
   }
+
+  uploadPhoto(file: File) {
+    const formData = new FormData();
+    formData.append('File', file);
+
+    return this.http.post<Photo>(this.baseUrl + 'members/add-photo', formData);
+  }
+
+  setMainPhoto(photoId: number) {
+    return this.http.put(this.baseUrl + `members/set-main-photo/${photoId}`, {});
+  }
 }
